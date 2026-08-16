@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.kghua.npcai.NpcAiMod;
+import com.kghua.npcai.data.ContributionStorage;
 import com.kghua.npcai.data.Questionnaire;
 import com.kghua.npcai.data.QuestionnaireStorage;
 import io.wifi.starrailexpress.SREConfig;
@@ -75,7 +76,20 @@ public class PlayerPendingTracker {
         if (XIAONAO_PENDING.contains(uuid)) return true;
         if (FEEDBACK_PENDING.contains(uuid.toString())) return true;
         if (hasQuestionnairePending(player)) return true;
+        if (hasLikePending(player)) return true;
         return false;
+    }
+
+    /**
+     * 投稿点赞红点：今日还有点赞次数没点完，且当期作品还点得动。
+     * 若剩余次数 > 当期可点作品数（作品点完了次数还有剩，无法再点），不算红点。
+     */
+    public static boolean hasLikePending(ServerPlayer player) {
+        UUID uuid = player.getUUID();
+        int remaining = ContributionStorage.getRemainingLikes(uuid);
+        if (remaining <= 0) return false;
+        int likeableLeft = ContributionStorage.getLikeableLeft(uuid);
+        return likeableLeft > 0 && remaining <= likeableLeft;
     }
 
     private static boolean hasQuestionnairePending(ServerPlayer player) {
@@ -129,6 +143,7 @@ public class PlayerPendingTracker {
         if (XIAONAO_PENDING.contains(player.getUUID())) reasons.add("小脑惩罚");
         if (FEEDBACK_PENDING.contains(player.getUUID().toString())) reasons.add("待填反馈");
         if (hasQuestionnairePending(player)) reasons.add("未填问卷");
+        if (hasLikePending(player)) reasons.add("投稿点赞");
         return String.join("、", reasons);
     }
 

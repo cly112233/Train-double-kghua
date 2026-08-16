@@ -176,6 +176,20 @@ public class ContributionStorage {
         return todayMap.getOrDefault(playerId.toString(), Collections.emptyList()).contains(contributionId.toString());
     }
 
+    /** 当期「还」能点得动的作品数（已审核 + 非自己投稿 + 今日未点过）。红点/提醒判定用 */
+    public static int getLikeableLeft(UUID playerId) {
+        ensureLoaded();
+        int currentPeriod = Contribution.getCurrentPeriod();
+        int count = 0;
+        for (Contribution c : CACHE.values()) {
+            if (c.getPeriod() != currentPeriod || !c.isApproved()) continue;
+            if (c.getAuthorId() != null && c.getAuthorId().equals(playerId)) continue; // 禁自赞
+            if (hasLiked(playerId, c.getId())) continue; // 今日已点过
+            count++;
+        }
+        return count;
+    }
+
     /**
      * 点赞/取消点赞。
      * @return true=点赞成功，false=取消点赞，null=无权限

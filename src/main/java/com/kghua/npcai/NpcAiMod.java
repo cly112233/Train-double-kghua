@@ -233,6 +233,11 @@ public class NpcAiMod implements ModInitializer {
                     lastReminderMinute = now.getMinute();
                     sendPendingReminders(server);
                 }
+                // 投稿点赞提醒：单独 20 分钟一次（不并入上面 10 分钟的提醒）
+                if (now.getMinute() % 20 == 0 && now.getSecond() < 2 && lastLikeReminderMinute != now.getMinute()) {
+                    lastLikeReminderMinute = now.getMinute();
+                    sendLikeReminders(server);
+                }
                 // 每秒：有称号的玩家确保队伍存在/前缀正确/已入队（效果等同每刻 join）
                 TitleManager.ensureAllTitles(server);
             }
@@ -1141,6 +1146,17 @@ public class NpcAiMod implements ModInitializer {
     }
 
     private static int lastReminderMinute = -1;
+    private static int lastLikeReminderMinute = -1;
+
+    /** 投稿点赞提醒（每 20 分钟）：今日点赞没点完且当期还有作品可点（红点规则同源） */
+    private static void sendLikeReminders(MinecraftServer server) {
+        for (ServerPlayer player : server.getPlayerList().getPlayers()) {
+            if (!PlayerPendingTracker.hasLikePending(player)) continue;
+            int remaining = ContributionStorage.getRemainingLikes(player.getUUID());
+            player.sendSystemMessage(Component.literal(
+                "§e[提醒] 您今日还有 " + remaining + " 次投稿点赞未点！"));
+        }
+    }
 
     private static void sendPendingReminders(MinecraftServer server) {
         for (ServerPlayer player : server.getPlayerList().getPlayers()) {
