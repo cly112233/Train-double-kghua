@@ -1,0 +1,74 @@
+{
+  "role.huarolemods.vengeance_agent": "Vengeance Agent",
+  "role.huarolemods.vengeance_agent.description": "Killer Team\nThe Vengeance Agent must purchase contracts to mark two random innocent players as targets. Targets glow purple in normal vision, and killing them grants double rewards.\nThe Vengeance Agent's ability is the Lens, which lets you select and inspect a target's inventory. The Lens must be purchased from the shop before use!\nThe Vengeance Knife is the Vengeance Agent's exclusive blade; its cooldown decreases as player count increases (minimum 10s).",
+
+  "info.screen.roleid.vengeance_agent": "Killer team role. Purchase contracts to mark targets, killing them grants double rewards. Buy the Lens to inspect target inventories.",
+
+  "role.huarolemods.vengeance_agent.team": "Killer",
+  "role.huarolemods.vengeance_agent.color": "Dark Red",
+  "role.huarolemods.vengeance_agent.mood": "Fake Mood",
+  "role.huarolemods.vengeance_agent.dash": "Unlimited",
+  "role.huarolemods.vengeance_agent.timer": "Visible",
+  "role.huarolemods.vengeance_agent.instinct": "Yes",
+  "role.huarolemods.vengeance_agent.min_players": "12 players",
+  "role.huarolemods.vengeance_agent.max_count": "1 per game",
+  "role.huarolemods.vengeance_agent.chance": "60%",
+
+  "role.huarolemods.vengeance_agent.ability.assassination": "Assassination Contract System",
+  "role.huarolemods.vengeance_agent.ability.lens": "Lens Vision System",
+
+  "role.huarolemods.vengeance_agent.assassination.desc": "The Vengeance Agent must purchase contracts to mark two random innocent players as targets. Targets glow purple in normal vision, and killing them grants double rewards.",
+
+  "role.huarolemods.vengeance_agent.reward.self_kill": "$200",
+  "role.huarolemods.vengeance_agent.reward.other_kill": "$30",
+  "role.huarolemods.vengeance_agent.reward.normal_kill": "$100",
+
+  "role.huarolemods.vengeance_agent.lens.desc": "The Vengeance Agent's ability is the Lens, which lets you select and inspect a target's inventory. The Lens must be purchased from the shop before use!",
+
+  "shop.huarolemods.vengeance_agent.reset_contracts": "Buy Contracts",
+  "shop.huarolemods.vengeance_agent.reset_contracts.desc": "Pay $30 to buy new assassination contracts. All previous targets must be dead.",
+  "shop.huarolemods.vengeance_agent.enable_lens": "Enable Lens",
+  "shop.huarolemods.vengeance_agent.enable_lens.desc": "Pay $125 to enable the lens vision system and unlock the ability",
+
+  "message.huarolemods.vengeance_agent.contract_received": "You received %d assassination contract(s)",
+  "message.huarolemods.vengeance_agent.contract_target": "Contract target: %s",
+  "message.huarolemods.vengeance_agent.contract_complete": "Contract completed! Earned $%d",
+  "message.huarolemods.vengeance_agent.contract_bonus": "Contract target killed! Bonus: $%d",
+  "message.huarolemods.vengeance_agent.contract_reset": "Contracts reset",
+  "message.huarolemods.vengeance_agent.lens_enabled": "Lens vision system enabled",
+  "message.huarolemods.vengeance_agent.lens_cooldown": "Skill on cooldown (%ds)",
+  "message.huarolemods.vengeance_agent.lens_switched": "Target switched",
+  "message.huarolemods.vengeance_agent.lens_protected": "Target protected, cannot attack (%ds)",
+
+  "hud.huarolemods.vengeance_agent.contracts": "Contract Targets: %d",
+  "hud.huarolemods.vengeance_agent.lens_active": "Lens: Active",
+  "hud.huarolemods.vengeance_agent.lens_viewing": "Viewing: %s",
+
+  "announcement.star.role.huarolemods.vengeance_agent": "Vengeance Agent",
+  "announcement.star.goals.huarolemods.vengeance_agent": "Complete assassination contracts for huge rewards, use the Lens to inspect your target's backpack!",
+
+  "announcement.star.role.vengeance_agent": "Vengeance Agent",
+  "announcement.star.goals.vengeance_agent": "Complete assassination contracts for huge rewards, use the Lens to inspect your target's backpack!",
+
+  "item.huarolemods.vengeance_knife": "Vengeance Knife",
+  "item.huarolemods.vengeance_knife.desc": "A blade designed for killers; cooldown decreases as player count increases",
+  "item.huarolemods.vengeance_lens": "Vengeance Lens",
+  "item.huarolemods.vengeance_lens.desc": "Pay $125 to unlock the ability: continuously view a contract target's inventory. Crouch + ability switches target; ability opens the view",
+  "item.huarolemods.vengeance_lens.effect": "§cEnable to view contract targets' inventory",
+  "item.huarolemods.vengeance_lens.cool": "§7Skill cooldown: 60 seconds",
+  "item.huarolemods.reset_contract": "Buy Contracts",
+  "item.huarolemods.robber_pistol": "Vengeance Pistol",
+  "item.huarolemods.robber_pistol.desc": "50% chance to drop after hitting a target",
+
+  "screen.huarolemods.lens_view": "Lens Vision - %s",
+  "screen.huarolemods.lens_view.read_only": "Read Only",
+
+  "hud.huarolemods.vengeance_agent.target": "§6Your target: %s",
+  "hud.huarolemods.vengeance_agent.hint": "Crouch+ability switches target, ability uses skill",
+  "hud.huarolemods.vengeance_agent.cooldown": "§cCooldown: %ds",
+  "hud.huarolemods.vengeance_agent.ready": "§aReady",
+  "hud.huarolemods.vengeance_agent.no_target": "§7No target",
+
+  "key.huarolemods.lens_switch": "Switch Lens Target",
+  "category.huarolemods": "HuaRoleMods"
+}

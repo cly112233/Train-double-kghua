@@ -1,0 +1,56 @@
+{
+  "entity.western_cowboy.customer_service_npc": "AI Customer Service NPC",
+  "item.western_cowboy.npc_admin_tool": "NPC Admin Staff",
+
+  "role.western_cowboy": "Western Cowboy",
+  "role.western_cowboy.desc": "You have a revolver. It's not for ambushes — it's for duels.",
+
+  "cowboy.duel.select_target": "Select Duel Target",
+  "cowboy.duel.go": "Draw!",
+  "cowboy.duel.vs": "VS %s",
+  "cowboy.duel.shield": "Shield x%d",
+
+  "cowboy.error.cooldown": "Duel is on cooldown",
+  "cowboy.error.safe_time": "Cannot duel during safe time",
+  "cowboy.error.not_enough_gold": "Not enough gold (need 250)",
+  "cowboy.error.too_far": "Target is too far (max 18 blocks)",
+  "cowboy.error.not_on_ground": "Target is not on the ground",
+  "cowboy.error.madness": "They've gone mad, I can't beat them.",
+  "cowboy.error.target_not_found": "Target player not found",
+  "cowboy.error.generic": "Cannot initiate duel",
+  "cowboy.error.not_cowboy": "You are not the Western Cowboy!",
+
+  "cowboy.screen.page": "Page %d/%d",
+  "cowboy.screen.prev": "< Prev",
+  "cowboy.screen.next": "Next >",
+
+  "cowboy.hud.cooldown": "⏳ Cooldown %s",
+  "cowboy.hud.ready": "✔ Duel Ready",
+  "cowboy.hud.shields": "🛡 x%d",
+  "cowboy.hud.countdown": "%d",
+
+  "cowboy.death.duel_lost": "%s lost a duel",
+  "cowboy.death.magic": "%s was killed by magic",
+  "cowboy.death.arena_exit": "%s fled the duel arena",
+
+  "gui.sre.mailbox.attachments": "Attachments:",
+  "gui.sre.mailbox.back": "Back",
+  "gui.sre.mailbox.claim": "Claim",
+  "gui.sre.mailbox.claim_all": "Claim All",
+  "gui.sre.mailbox.claimed_badge": "Claimed",
+  "gui.sre.mailbox.delete": "Delete",
+  "gui.sre.mailbox.delete_read": "Delete Read",
+  "gui.sre.mailbox.empty": "No mails",
+  "gui.sre.mailbox.feedback_claimed": "✓ Claimed",
+  "gui.sre.mailbox.feedback_claimed_all": "✓ ×%s",
+  "gui.sre.mailbox.no_selection": "No mail selected",
+  "gui.sre.mailbox.reward_badge": "Reward",
+  "gui.sre.mailbox.select_hint": "Click a mail on the left",
+  "gui.sre.mailbox.stats": "%s total | %s claimable",
+  "gui.sre.mailbox.status_claimed": "Claimed",
+  "gui.sre.mailbox.status_expired": "Expired",
+  "gui.sre.mailbox.tag_claimed": "✓ Claimed",
+  "gui.sre.mailbox.tag_reward": "★ Reward",
+  "gui.sre.mailbox.title": "Mailbox",
+  "gui.sre.mailbox.unread": "%s unread"
+}

@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "com.cowboymod.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["FoolMeetingBlocker", "RefugeeSaveMixin", "DuelGunPayloadMixin", "DuelKnifePayloadMixin"],
+  "overwrites": { "requireAnnotations": true },
+  "client": ["CowboyScreenMixin"],
+  "injectors": { "defaultRequire": 1 }
+}

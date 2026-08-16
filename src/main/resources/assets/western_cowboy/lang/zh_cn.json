@@ -1,0 +1,68 @@
+{
+  "entity.western_cowboy.customer_service_npc": "AI 客服 NPC",
+  "item.western_cowboy.npc_admin_tool": "NPC 管理手杖",
+  "block.western_cowboy.cerebellum_board": "小脑榜方块(3×4)",
+  "block.western_cowboy.cerebellum_board_medium": "小脑榜方块(5×7)",
+  "key.western_cowboy.open_teleport": "打开传送点",
+  "key.categories.western_cowboy": "NPC AI",
+  "block.western_cowboy.cerebellum_board_large": "小脑榜方块(7×9)",
+  "block.western_cowboy.cerebellum_board_xl": "小脑榜方块(9×9)",
+
+  "announcement.star.role.western_cowboy.western_cowboy": "西部牛仔",
+  "announcement.star.role.western_cowboy": "西部牛仔",
+  "announcement.star.goals.western_cowboy.western_cowboy": "你说拿左轮的人必死无疑？我们来看看是不是真的",
+  "announcement.star.goals.western_cowboy": "你说拿左轮的人必死无疑？我们来看看是不是真的",
+
+  "info.screen.roleid.western_cowboy": "平民阵营\n打开背包可花费250金币选择一名18格范围内的玩家进行牛仔决斗！（不可拉取正在疯魔的玩家）\n\n开启牛仔对决后，对方会变为决斗者，双方各获得一把牛仔左轮背对背站立，3s倒计时后决斗开始，在35s内先击中对方的玩家赢得对决，赌注为护盾以及生命。\n\n对决结束无论结果如何双方都会恢复到对决前的状态，获胜的玩家将会获得一个可叠加的护盾，失败的玩家将在1s后被巫毒魔法杀死，没有胜者则无事发生。\n\n注：特殊事件（愚者会议，亡命徒时刻）会将正在决斗的玩家强制拉出决斗，但同时西部牛仔的技能冷却跟花费的金币也会返还。\n特殊事件期间无法发起决斗。\n\n牛仔不说再见，他们会说\"see you later\"，直到我们入土，然后才会说再见。",
+
+  "star.story.role.western_cowboy": "他出生那年，得克萨斯州的铁路还没修到镇上。他父亲是牧场的工头，母亲在驿站的厨房里帮工。七岁第一次爬上马背，十二岁能独自赶牛群穿过响尾蛇栖息的峡谷。十六岁那年父亲被一匹受惊的野马踢断了腿，从此他接过了缰绳和鞭子。\n\n二十二岁，他已经有了自己的马鞍、自己的左轮、和一个在西堪萨斯等他的姑娘。他打算再干一季就回去结婚，在镇子边上买块地，养几头牛，生两个孩子，老死在能看到落日的房子里。\n\n然后那个春天，东部来的铁路公司买下了牧场所有的地。牛群被赶上火车运往芝加哥的屠宰场，马厩被推平改成货场，他站了十二年的围栏被拆成枕木铺在铁轨下面。他拿到了一笔遣散费——够买一张去任何地方的车票，但不够买回他的生活。\n\n他在镇上的酒馆里待了三个月。每天午后进去，午夜出来。左轮搁在吧台上，旁边是空掉的威士忌杯。没有人敢坐在他旁边的凳子上。镇上的警长认识他父亲，走过来的那天只说了一句话：\"你爹这辈子没让人替他活过。你也别。\"\n\n那天晚上他上了车。不是去西堪萨斯——那个姑娘已经嫁给了银行的伙计。他上了一趟没有目的地的列车，随身只有一把左轮、一顶旧帽子、和一双看过了太多日落的眼睛。\n\n他靠在座椅上，帽檐压得很低。窗外是他曾经纵马狂奔的荒原，现在变成了电线杆和信号塔。旁边的人在大声争论谁是凶手，谁在撒谎，谁该死。他没有加入。他把左轮从枪套里抽出来，搁在膝盖上，用一块旧布慢慢擦。\n\n有人问他：你有枪，你怎么不去杀了那个人？\n\n他抬起眼睛。那是一双被太多日头晒过的眼睛，眼角有细纹，瞳孔很浅，像是褪了色。\n\n\"杀人不需要我。\"他说。\"这趟车上最不缺的就是杀人的人。\"\n\n\"那你上来干什么？\"\n\n他把左轮翻了个面，枪管上的刻痕在灯光下闪了一下。有些刻痕很旧了，有些还很新。每一道都是一个名字。\n\n\"等人。\"\n\n\"等谁？\"\n\n他没有回答。窗外是一望无际的戈壁，列车在上面划出一道漫长的灰线。他想起很多年前一个黄昏，老KG站在牧场的门口，夕阳从背后打过来，整个人像一尊金铸的雕塑。老KG说：你拔枪太慢了，小子。\n\n他输了。那是他这辈子第一次输，也是他最后一次见到老KG。\n\n也许在这趟列车上，也许在下一趟。也许那个人早就老死在某个他永远不会踏足的镇子里了。但没关系——他有一辈子可以等。",
+
+  "death_reason.noellesroles.western_cowboy": "被魔法杀死",
+  "death_reason.starrailexpress.western_cowboy": "被魔法杀死",
+
+  "cowboy.duel.select_target": "选择决斗目标",
+  "cowboy.error.cooldown": "§c决斗冷却中",
+  "cowboy.error.safe_time": "§c安全时间内无法开启决斗",
+  "cowboy.error.not_enough_gold": "§c金币不足（250）",
+  "cowboy.error.too_far": "§c目标太远（18格内）",
+  "cowboy.error.not_on_ground": "§c目标不在地面",
+  "cowboy.error.madness": "§c对方已经疯魔了，我打不过他。",
+  "cowboy.error.generic": "§c无法发起决斗",
+
+  "cowboy.screen.page": "第 %d/%d 页",
+  "cowboy.screen.prev": "< 上一页",
+  "cowboy.screen.next": "下一页 >",
+
+  "announcement.star.role.killer_duelist.killer_duelist": "对决者",
+  "announcement.star.role.killer_duelist": "对决者",
+  "announcement.star.goals.killer_duelist.killer_duelist": "拔枪吧...",
+  "announcement.star.goals.killer_duelist": "拔枪吧...",
+  "info.screen.roleid.killer_duelist": "一个被西部牛仔拉进来的决斗者",
+
+  "announcement.star.role.neutral_duelist.neutral_duelist": "对决者",
+  "announcement.star.role.neutral_duelist": "对决者",
+  "announcement.star.goals.neutral_duelist.neutral_duelist": "拔枪吧...",
+  "announcement.star.goals.neutral_duelist": "拔枪吧...",
+  "info.screen.roleid.neutral_duelist": "一个被西部牛仔拉进来的决斗者",
+
+  "gui.sre.mailbox.attachments": "附件:",
+  "gui.sre.mailbox.back": "返回",
+  "gui.sre.mailbox.claim": "领取",
+  "gui.sre.mailbox.claim_all": "一键领取",
+  "gui.sre.mailbox.claimed_badge": "已领取",
+  "gui.sre.mailbox.delete": "删除",
+  "gui.sre.mailbox.delete_read": "删除已读",
+  "gui.sre.mailbox.empty": "暂无邮件",
+  "gui.sre.mailbox.feedback_claimed": "✓ 已领取",
+  "gui.sre.mailbox.feedback_claimed_all": "✓ ×%s",
+  "gui.sre.mailbox.no_selection": "未选中邮件",
+  "gui.sre.mailbox.reward_badge": "奖励",
+  "gui.sre.mailbox.select_hint": "点击左侧邮件查看",
+  "gui.sre.mailbox.stats": "共 %s 封 | 可领取 %s 封",
+  "gui.sre.mailbox.status_claimed": "已领取",
+  "gui.sre.mailbox.status_expired": "已过期",
+  "gui.sre.mailbox.tag_claimed": "✓ 已领取",
+  "gui.sre.mailbox.tag_reward": "★ 奖励",
+  "gui.sre.mailbox.title": "邮箱",
+  "gui.sre.mailbox.unread": "%s 封未读"
+}

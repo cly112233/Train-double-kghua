@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "western_cowboy",
+  "version": "${version}",
+  "name": "Train double-kghua",
+  "description": "非官方附属模组：StarRailExpress（残月列车）的 Western Cowboy 决斗者角色附加 + NPC AI 客服功能。非残月团队官方作品，未经官方认可。原模组仓库：https://github.com/catmoon-train/StarRailExpress",
+  "authors": ["kghua"],
+  "license": "GPL-3.0",
+  "contact": {
+    "homepage": "https://github.com/cly112233/western-cowboy",
+    "sources": "https://github.com/cly112233/western-cowboy",
+    "issues": "https://github.com/cly112233/western-cowboy/issues"
+  },
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.cowboymod.CowboyMod", "com.kghua.npcai.NpcAiMod"],
+    "client": ["com.cowboymod.client.CowboyModClient", "com.kghua.npcai.client.NpcAiClient"],
+    "cardinal-components": ["xiao.hua.cca.HuaRoleComponents"]
+  },
+  "mixins": ["western_cowboy.mixins.json", "huarolemods.mixins.json"],
+  "custom": {
+    "cardinal-components": ["western_cowboy:vengeance_agent"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "starrailexpress": ">=4.0.0",
+    "habitrain_lottery": ">=1.0.0",
+    "cardinal-components-base": "*",
+    "cardinal-components-entity": "*"
+  }
+}

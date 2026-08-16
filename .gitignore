@@ -1,0 +1,27 @@
+# 构建产物
+build/
+.gradle/
+*.jar
+
+# 依赖 jar（第三方/官方产物，不重新分发；README 说明获取方式）
+libs/
+
+# 运行数据与本地配置（可能含服务器地址/密钥/token，绝不入库）
+run/
+*.pem
+*.key
+config/
+npcai-server.json
+*_server.json
+
+# 本地构建日志/中间产物
+*.log
+build_log.txt
+cowboy_build.err
+shop_get.txt
+StarRailExpress.accesswidener
+sre_remap*.log
+
+# 备份文件
+*.bak
+*.orig

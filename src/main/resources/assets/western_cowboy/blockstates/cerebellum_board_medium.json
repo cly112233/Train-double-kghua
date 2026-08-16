@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "western_cowboy:block/cerebellum_board" },
+    "facing=east":  { "model": "western_cowboy:block/cerebellum_board", "y": 90 },
+    "facing=south": { "model": "western_cowboy:block/cerebellum_board", "y": 180 },
+    "facing=west":  { "model": "western_cowboy:block/cerebellum_board", "y": 270 }
+  }
+}

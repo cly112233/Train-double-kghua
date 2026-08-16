@@ -1,0 +1,71 @@
+{
+  "role.huarolemods.vengeance_agent": "冤仇代行",
+  "role.huarolemods.vengeance_agent.description": "杀手阵营\n冤仇代行需要购买委托将两个随机好人玩家标记为委托目标，委托目标在常规视角中持续发出紫色高亮，击杀委托目标可以获得双倍报酬。\n冤仇代行的技能为晶状体，可选择并透视一个委托目标的背包。晶状体需在商店购买后才可使用！\n冤仇之刃是冤仇代行的专属刀，冤仇之刃的cd会随着玩家数量增多而减少（最低为10s）",
+
+  "info.screen.roleid.vengeance_agent": "杀手阵营角色。购买委托标记目标，击杀获得双倍报酬，购买晶状体后可透视目标背包。",
+
+  "role.huarolemods.vengeance_agent.team": "杀手",
+  "role.huarolemods.vengeance_agent.color": "深红色",
+  "role.huarolemods.vengeance_agent.mood": "虚假情绪",
+  "role.huarolemods.vengeance_agent.dash": "无限制",
+  "role.huarolemods.vengeance_agent.timer": "可见",
+  "role.huarolemods.vengeance_agent.instinct": "是",
+  "role.huarolemods.vengeance_agent.min_players": "12人",
+  "role.huarolemods.vengeance_agent.max_count": "1人/局",
+  "role.huarolemods.vengeance_agent.chance": "60%",
+
+  "role.huarolemods.vengeance_agent.ability.assassination": "暗杀委托系统",
+  "role.huarolemods.vengeance_agent.ability.lens": "晶状体透视系统",
+
+  "role.huarolemods.vengeance_agent.assassination.desc": "冤仇代行需要购买委托将两个随机好人玩家标记为委托目标，委托目标在常规视角中持续发出紫色高亮，击杀委托目标可以获得双倍报酬。",
+
+  "role.huarolemods.vengeance_agent.reward.self_kill": "$200",
+  "role.huarolemods.vengeance_agent.reward.other_kill": "$30",
+  "role.huarolemods.vengeance_agent.reward.normal_kill": "$100",
+
+  "role.huarolemods.vengeance_agent.lens.desc": "冤仇代行的技能为晶状体，可选择并透视一个委托目标的背包。晶状体需在商店购买后才可使用！",
+
+  "shop.huarolemods.vengeance_agent.reset_contracts": "购买委托",
+  "shop.huarolemods.vengeance_agent.reset_contracts.desc": "花费$30购买新的暗杀委托，上一批委托目标必须全部死亡",
+  "shop.huarolemods.vengeance_agent.enable_lens": "启用晶状体",
+  "shop.huarolemods.vengeance_agent.enable_lens.desc": "花费$125启用晶状体透视系统并解锁技能",
+
+  "message.huarolemods.vengeance_agent.contract_received": "你收到了 %d 个暗杀委托",
+  "message.huarolemods.vengeance_agent.contract_target": "委托目标: %s",
+  "message.huarolemods.vengeance_agent.contract_complete": "委托完成！获得 $%d",
+  "message.huarolemods.vengeance_agent.contract_bonus": "击杀委托目标！额外奖励 $%d",
+  "message.huarolemods.vengeance_agent.contract_reset": "委托已重置",
+  "message.huarolemods.vengeance_agent.lens_enabled": "晶状体透视系统已启用",
+  "message.huarolemods.vengeance_agent.lens_cooldown": "技能冷却中 (%ds)",
+  "message.huarolemods.vengeance_agent.lens_switched": "已切换查看目标",
+  "message.huarolemods.vengeance_agent.lens_protected": "目标受到保护，无法攻击 (%ds)",
+
+  "hud.huarolemods.vengeance_agent.contracts": "委托目标: %d",
+  "hud.huarolemods.vengeance_agent.lens_active": "晶状体: 已启用",
+  "hud.huarolemods.vengeance_agent.lens_viewing": "查看目标: %s",
+
+  "announcement.star.role.huarolemods.vengeance_agent": "冤仇代行",
+  "announcement.star.goals.huarolemods.vengeance_agent": "完成暗杀委托获得高额报酬，利用晶状体查看委托对象背包！",
+
+  "announcement.star.role.vengeance_agent": "冤仇代行",
+  "announcement.star.goals.vengeance_agent": "完成暗杀委托获得高额报酬，利用晶状体查看委托对象背包！",
+
+  "item.huarolemods.vengeance_knife": "冤仇之刃",
+  "item.huarolemods.vengeance_knife.desc": "专为杀手设计的利刃，冷却时间随游玩人数增加而减少",
+  "item.huarolemods.vengeance_lens": "晶状体",
+  "item.huarolemods.vengeance_lens.desc": "支付$125启用后解锁技能：可持续查看委托目标背包；蹲下按技能键切换目标，站立按技能键打开界面",
+  "item.huarolemods.vengeance_lens.effect": "§c启用后可透视委托目标的背包内容",
+  "item.huarolemods.vengeance_lens.cool": "§7技能冷却: 60秒",
+  "item.huarolemods.reset_contract": "购买委托",
+  "item.huarolemods.robber_pistol": "冤仇之枪",
+  "item.huarolemods.robber_pistol.desc": "击中后有50%概率掉落",
+
+  "screen.huarolemods.lens_view": "晶状体透视 - %s",
+  "screen.huarolemods.lens_view.read_only": "只读模式",
+
+  "hud.huarolemods.vengeance_agent.target": "§6你的查看目标是: %s",
+  "hud.huarolemods.vengeance_agent.hint": "蹲下+技能键切换目标，技能键使用技能",
+  "hud.huarolemods.vengeance_agent.cooldown": "§c冷却时间: %d秒",
+  "hud.huarolemods.vengeance_agent.ready": "§a就绪",
+  "hud.huarolemods.vengeance_agent.no_target": "§7暂无查看目标"
+}
