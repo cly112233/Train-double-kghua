@@ -7,9 +7,9 @@
   "authors": ["kghua"],
   "license": "GPL-3.0",
   "contact": {
-    "homepage": "https://github.com/cly112233/western-cowboy",
-    "sources": "https://github.com/cly112233/western-cowboy",
-    "issues": "https://github.com/cly112233/western-cowboy/issues"
+    "homepage": "https://github.com/cly112233/Train-double-kghua",
+    "sources": "https://github.com/cly112233/Train-double-kghua",
+    "issues": "https://github.com/cly112233/Train-double-kghua/issues"
   },
   "environment": "*",
   "entrypoints": {
