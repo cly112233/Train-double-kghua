@@ -250,6 +250,15 @@ public class NpcAiClient implements ClientModInitializer {
             });
         });
 
+        // 称号状态同步：称号页打开时预填编辑框 + 刷新当前称号展示
+        ClientPlayNetworking.registerGlobalReceiver(com.kghua.npcai.network.SyncTitlePacket.TYPE, (payload, context) -> {
+            context.client().execute(() -> {
+                if (context.client().screen instanceof com.kghua.npcai.client.screen.TitleScreen ts) {
+                    ts.applySync(payload);
+                }
+            });
+        });
+
         // 预加载客户端配置，确保缓存默认值并创建默认配置文件
         NpcAiClientConfig.getAiApiUrl();
 

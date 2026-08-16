@@ -32,6 +32,7 @@ public class CustomerChatScreen extends Screen {
     private final String playerUuid;
     private final boolean mapGroupMember;
     private EditBox inputBox;
+    private Button titleButton;
     private Button teleportButton;
     private Button feedbackButton;
     private Button questionnaireButton;
@@ -135,28 +136,33 @@ public class CustomerChatScreen extends Screen {
             Component.literal("发送"), btn -> sendMessage()));
 
         int sideTopY = py + 40;
-        this.teleportButton = new NoShadowButton(sideX, sideTopY, SIDE_BTN_W, SIDE_BTN_H,
+        // 称号（最顶，传送上方）→ 传送/反馈/问卷/邮箱/投稿 → 地图模式 依次顺延
+        this.titleButton = new NoShadowButton(sideX, sideTopY, SIDE_BTN_W, SIDE_BTN_H,
+            Component.literal("称号"), btn -> openTitle());
+        this.addRenderableWidget(this.titleButton);
+
+        this.teleportButton = new NoShadowButton(sideX, sideTopY + (SIDE_BTN_H + SIDE_BTN_GAP) * 1, SIDE_BTN_W, SIDE_BTN_H,
             Component.literal("传送"), btn -> openTeleport());
         this.addRenderableWidget(this.teleportButton);
 
-        this.feedbackButton = new NoShadowButton(sideX, sideTopY + SIDE_BTN_H + SIDE_BTN_GAP, SIDE_BTN_W, SIDE_BTN_H,
+        this.feedbackButton = new NoShadowButton(sideX, sideTopY + (SIDE_BTN_H + SIDE_BTN_GAP) * 2, SIDE_BTN_W, SIDE_BTN_H,
             Component.literal("反馈"), btn -> openFeedback());
         this.addRenderableWidget(this.feedbackButton);
 
-        this.questionnaireButton = new NoShadowButton(sideX, sideTopY + (SIDE_BTN_H + SIDE_BTN_GAP) * 2, SIDE_BTN_W, SIDE_BTN_H,
+        this.questionnaireButton = new NoShadowButton(sideX, sideTopY + (SIDE_BTN_H + SIDE_BTN_GAP) * 3, SIDE_BTN_W, SIDE_BTN_H,
             Component.literal("问卷"), btn -> openQuestionnaire());
         this.addRenderableWidget(this.questionnaireButton);
 
-        this.mailButton = new NoShadowButton(sideX, sideTopY + (SIDE_BTN_H + SIDE_BTN_GAP) * 3, SIDE_BTN_W, SIDE_BTN_H,
+        this.mailButton = new NoShadowButton(sideX, sideTopY + (SIDE_BTN_H + SIDE_BTN_GAP) * 4, SIDE_BTN_W, SIDE_BTN_H,
             Component.literal("邮箱"), btn -> openMail());
         this.addRenderableWidget(this.mailButton);
 
-        this.contributionButton = new NoShadowButton(sideX, sideTopY + (SIDE_BTN_H + SIDE_BTN_GAP) * 4, SIDE_BTN_W, SIDE_BTN_H,
+        this.contributionButton = new NoShadowButton(sideX, sideTopY + (SIDE_BTN_H + SIDE_BTN_GAP) * 5, SIDE_BTN_W, SIDE_BTN_H,
             Component.literal("投稿"), btn -> openContribution());
         this.addRenderableWidget(this.contributionButton);
 
         if (mapGroupMember) {
-            this.mapModeButton = new NoShadowButton(sideX, sideTopY + (SIDE_BTN_H + SIDE_BTN_GAP) * 5, SIDE_BTN_W, SIDE_BTN_H,
+            this.mapModeButton = new NoShadowButton(sideX, sideTopY + (SIDE_BTN_H + SIDE_BTN_GAP) * 6, SIDE_BTN_W, SIDE_BTN_H,
                 Component.literal("地图模式"), btn -> enterMapMode());
             this.addRenderableWidget(this.mapModeButton);
         }
@@ -177,6 +183,12 @@ public class CustomerChatScreen extends Screen {
         }
         currentScreen.addMessage("系统", message);
         return true;
+    }
+
+    private void openTitle() {
+        if (this.minecraft != null) {
+            this.minecraft.setScreen(new TitleScreen(this));
+        }
     }
 
     private void openContribution() {

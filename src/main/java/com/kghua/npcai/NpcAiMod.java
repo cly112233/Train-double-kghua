@@ -4,6 +4,7 @@ import com.kghua.npcai.command.PlayNpcCommand;
 import com.kghua.npcai.command.TallaiCommand;
 import com.kghua.npcai.data.*;
 import com.kghua.npcai.server.DeathEventHandler;
+import com.kghua.npcai.server.TitleManager;
 import com.kghua.npcai.mailbridge.MailBridge;
 import com.kghua.npcai.server.config.NpcAiServerConfig;
 import com.kghua.npcai.webbridge.WebBridge;
@@ -173,6 +174,9 @@ public class NpcAiMod implements ModInitializer {
                 grantReward(joining, pending.cards, pending.lottery);
                 joining.sendSystemMessage(Component.literal("§6投稿奖励已发送至邮箱，请查收！"));
             }
+
+            // 上线即应用称号（有称号的立即入队；无称号不触碰任何队伍）
+            TitleManager.ensurePlayerTitle(joining);
         });
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> {
@@ -181,6 +185,9 @@ public class NpcAiMod implements ModInitializer {
             NpcAdminStorage.load();
             MailBindingStorage.load();
             ContributionRewardStorage.load();
+            TitleStorage.load();
+            // 清理称号系统自己名下的空队伍（离线改名残留/崩溃残留；绝不动其他队伍）
+            TitleManager.cleanupOrphanTeams(server);
             // 预加载服务端 AI 配置，确保默认值已就绪
             NpcAiServerConfig.getDefaultAiApiUrl();
             // 预加载 NPC 单例数据，避免区块加载时触发磁盘扫描
@@ -226,10 +233,13 @@ public class NpcAiMod implements ModInitializer {
                     lastReminderMinute = now.getMinute();
                     sendPendingReminders(server);
                 }
+                // 每秒：有称号的玩家确保队伍存在/前缀正确/已入队（效果等同每刻 join）
+                TitleManager.ensureAllTitles(server);
             }
             if (server.getTickCount() % 6000 == 0) { // 每 5 分钟保存一次
                 NpcDataManager.saveAll();
                 PlayerMapGroupStorage.save();
+                TitleStorage.save();
             }
             // 每2秒检测小脑计分板变化并广播（管理员 /scoreboard 指令修改实时同步到管理端与小脑榜方块）
             if (server.getTickCount() % 40 == 0) {
@@ -245,6 +255,7 @@ public class NpcAiMod implements ModInitializer {
             NpcDataManager.saveAll();
             PlayerPendingTracker.save();
             PlayerMapGroupStorage.save();
+            TitleStorage.save();
             WebBridge.stop();
         });
 
@@ -324,7 +335,10 @@ public class NpcAiMod implements ModInitializer {
         PayloadTypeRegistry.playC2S().register(ExportCerebellumPacket.TYPE, ExportCerebellumPacket.CODEC);
         PayloadTypeRegistry.playC2S().register(ExecuteAiCommandPacket.TYPE, ExecuteAiCommandPacket.CODEC);
         PayloadTypeRegistry.playC2S().register(RequestMapTeleportPacket.TYPE, RequestMapTeleportPacket.CODEC);
+        PayloadTypeRegistry.playC2S().register(RequestTitlePacket.TYPE, RequestTitlePacket.CODEC);
+        PayloadTypeRegistry.playC2S().register(SaveTitlePacket.TYPE, SaveTitlePacket.CODEC);
         PayloadTypeRegistry.playS2C().register(OpenMapTeleportPacket.TYPE, OpenMapTeleportPacket.CODEC);
+        PayloadTypeRegistry.playS2C().register(SyncTitlePacket.TYPE, SyncTitlePacket.CODEC);
 
         PayloadTypeRegistry.playS2C().register(OpenNpcChatPacket.TYPE, OpenNpcChatPacket.CODEC);
         PayloadTypeRegistry.playS2C().register(OpenNpcAdminPacket.TYPE, OpenNpcAdminPacket.CODEC);
@@ -1026,6 +1040,16 @@ public class NpcAiMod implements ModInitializer {
                 }
                 ServerPlayNetworking.send(player, new OpenMapTeleportPacket(true, entityId, npcName));
             });
+        });
+
+        // 玩家打开称号页：回发当前称号状态（预填编辑框 + 展示区）
+        ServerPlayNetworking.registerGlobalReceiver(RequestTitlePacket.TYPE, (payload, context) -> {
+            context.server().execute(() -> TitleManager.handleRequest(context.player()));
+        });
+
+        // 玩家点击称号页确认：校验 → 落盘 → 立即生效 → 回包
+        ServerPlayNetworking.registerGlobalReceiver(SaveTitlePacket.TYPE, (payload, context) -> {
+            context.server().execute(() -> TitleManager.handleSave(context.player(), payload));
         });
 
         // 导出小脑榜为md文档
