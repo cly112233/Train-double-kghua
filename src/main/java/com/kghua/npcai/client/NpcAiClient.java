@@ -230,7 +230,21 @@ public class NpcAiClient implements ClientModInitializer {
         });
         ClientPlayNetworking.registerGlobalReceiver(com.kghua.npcai.network.OpenMapTeleportPacket.TYPE, (payload, context) -> {
             context.client().execute(() -> {
-                if (!payload.isMember() || payload.npcEntityId() < 0) return;
+                if (!payload.isMember()) {
+                    // 旧服务端或异常路径：明确提示而不是静默失败
+                    if (context.client().player != null) {
+                        context.client().player.sendSystemMessage(net.minecraft.network.chat.Component.literal(
+                            "§c你不是地图组成员，无法使用传送面板（请管理员在管理界面添加）"));
+                    }
+                    return;
+                }
+                if (payload.npcEntityId() < 0) {
+                    if (context.client().player != null) {
+                        context.client().player.sendSystemMessage(net.minecraft.network.chat.Component.literal(
+                            "§c服务器还没有配置NPC，请先在管理界面添加NPC"));
+                    }
+                    return;
+                }
                 context.client().setScreen(new com.kghua.npcai.client.screen.TeleportCategoryScreen(
                     payload.npcEntityId(), payload.npcName()));
             });

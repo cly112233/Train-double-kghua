@@ -998,23 +998,33 @@ public class NpcAiMod implements ModInitializer {
                     player.sendSystemMessage(net.minecraft.network.chat.Component.literal("§c游戏中无法使用传送"));
                     return;
                 }
-                boolean isMember = PlayerMapGroupStorage.isMember(player.getUUID());
+                // 地图组成员检查（NPC管理员豁免：服主/管理员不受成员限制，与对局拦截逻辑一致）
+                boolean isMember = PlayerMapGroupStorage.isMember(player.getUUID())
+                    || NpcAdminStorage.isAdmin(player.getUUID());
+                if (!isMember) {
+                    player.sendSystemMessage(net.minecraft.network.chat.Component.literal(
+                        "§c你不是地图组成员，无法使用传送面板（请管理员在管理界面添加）"));
+                    return;
+                }
                 int entityId = -1;
                 String npcName = "";
-                if (isMember) {
-                    // 支持多个NPC：优先找任意一个已存在的NPC
-                    UUID anyNpcUuid = NpcDataManager.findAnyNpcUuid();
-                    if (anyNpcUuid != null) {
-                        for (ServerLevel level : context.server().getAllLevels()) {
-                            if (level.getEntity(anyNpcUuid) instanceof CustomerServiceNpcEntity npc) {
-                                entityId = npc.getId();
-                                npcName = npc.getNpcName();
-                                break;
-                            }
+                // 支持多个NPC：优先找任意一个已存在的NPC
+                UUID anyNpcUuid = NpcDataManager.findAnyNpcUuid();
+                if (anyNpcUuid != null) {
+                    for (ServerLevel level : context.server().getAllLevels()) {
+                        if (level.getEntity(anyNpcUuid) instanceof CustomerServiceNpcEntity npc) {
+                            entityId = npc.getId();
+                            npcName = npc.getNpcName();
+                            break;
                         }
                     }
                 }
-                ServerPlayNetworking.send(player, new OpenMapTeleportPacket(isMember, entityId, npcName));
+                if (entityId < 0) {
+                    player.sendSystemMessage(net.minecraft.network.chat.Component.literal(
+                        "§c服务器还没有配置NPC，请先在管理界面添加NPC"));
+                    return;
+                }
+                ServerPlayNetworking.send(player, new OpenMapTeleportPacket(true, entityId, npcName));
             });
         });
 

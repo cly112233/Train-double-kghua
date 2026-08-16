@@ -75,6 +75,19 @@ public class ContributionBrowseScreen extends Screen {
         return remainingLikes;
     }
 
+    /** 本期剩余时间倒计时文本（天 HH:mm:ss；不足一天只显示 HH:mm:ss） */
+    private static String fmtRemain(long ms) {
+        long totalSec = Math.max(0, ms / 1000);
+        long days = totalSec / 86400;
+        long hours = (totalSec % 86400) / 3600;
+        long mins = (totalSec % 3600) / 60;
+        long secs = totalSec % 60;
+        if (days > 0) {
+            return String.format("%d天 %02d:%02d:%02d", days, hours, mins, secs);
+        }
+        return String.format("%02d:%02d:%02d", hours, mins, secs);
+    }
+
     private List<Contribution> getFiltered() {
         String selected = Contribution.TYPES[subTab];
         int currentPeriod = Contribution.getCurrentPeriod();
@@ -123,10 +136,13 @@ public class ContributionBrowseScreen extends Screen {
 
         TrainStyleRenderHelper.renderPanel(graphics, px, py, PANEL_W, PANEL_H);
 
-        // 顶部标题：第X期
-        String periodTitle = "第" + Contribution.getCurrentPeriod() + "期投稿";
-        int periodW = this.font.width(periodTitle);
-        graphics.drawString(this.font, Component.literal(periodTitle),
+        // 顶部标题：第X期 + 真实剩余时间倒计时（实时渲染，每秒跳动）
+        int currentPeriod = Contribution.getCurrentPeriod();
+        String periodTitle = "第" + currentPeriod + "期投稿";
+        String countdown = fmtRemain(Contribution.getPeriodEndAt(currentPeriod) - System.currentTimeMillis());
+        String fullTitle = periodTitle + "  " + countdown;
+        int periodW = this.font.width(fullTitle);
+        graphics.drawString(this.font, Component.literal(fullTitle),
             px + (PANEL_W - periodW) / 2, py + 12, 0xFFFFCC00, false);
 
         // 右上角剩余点赞次数
